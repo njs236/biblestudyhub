@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    {% for study in studies %}
+      <p>{{ study.group.name }}</p>
+      <p>{{ study.description }}</p>
+      <p>{{ study.date }}</p>
+      <hr>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

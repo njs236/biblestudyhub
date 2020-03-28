@@ -1,0 +1,75 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      html, body {
+        overflow-x: hidden;
+        background-color: #F4F4F4;
+      }
+      .navbar-nav > .nav-item > .nav-link {
+        color: white !important;
+      }
+      .navbar-brand {
+        color: white !important;
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block head-css %}
+    {% endblock %}
+
+    {% block head-js %}
+    {% endblock %}
+
+    <title>{% block title %}Bible Study Hub{% endblock %}</title>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light" style="background-color: #5bb4b7; max-height: 40px;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" href="#"><img height="30" src="" alt="Bible Study Hub"/></a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/profile">Groups</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          {% if request.user.is_authenticated %}
+            <li class="nav-item" style="margin-right: 10px;">
+              <a href="logout/" class="btn btn-outline-success btn-sm">Log Out</a>
+            </li>
+          {% else %}
+            <li class="nav-item" style="margin-right: 10px;">
+              <a href="login/" class="btn btn-success btn-sm">Login</a>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-info btn-sm">Create Account</button>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <br>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% block end-javascript %}
+    {% endblock %}
+  </body>
+</html>
