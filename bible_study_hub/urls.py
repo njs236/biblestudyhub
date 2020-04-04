@@ -15,11 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
 
-from groups.views import IndexView, StudyListView
+from groups.views import IndexView, StudyListView, StudyDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view(), name='index'),
+    path('', StudyListView.as_view(template_name="index.html"), name='index'),
+    path('logout/', LogoutView.as_view(), name="logout"),
+    path(
+        'login/',
+        LoginView.as_view(
+            template_name="account/login.html",
+        ),
+        name="login"
+    ),
+
     path('studies', StudyListView.as_view(), name='studies'),
+    path('studies/<pk>/', StudyDetailView.as_view(), name='study-detail'),
 ]

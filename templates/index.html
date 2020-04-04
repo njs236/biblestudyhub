@@ -4,7 +4,15 @@
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <h2>Welcome!</h2>
-
+      <br>
+      <h3>Studies:</h3>
+      {% for study in studies %}
+        <p>{{ study.group.name }}</p>
+        <p>{{ study.description }}</p>
+        <p>{{ study.date }}</p>
+        <a class="btn btn-info" href="studies/{{ study.pk }}"/>View</a>
+        <hr>
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

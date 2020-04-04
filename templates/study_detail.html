@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head-css %}
+  <style>
+  html, body {
+    height: 100%;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1>{{ study.group.name }}</h1>
+    <p>{{ study.date }}</p>
+    <p>{{ study.description }}</p>
+    <a href="https://meet.jit.si/{{ study.pk }}-bible-study-hub" class="btn btn-success" target="_blank">Join Live</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block end-javascript %}
+  {% comment %}
+  <script src='https://meet.jit.si/external_api.js'></script>
+  <script>
+  const domain = 'meet.jit.si';
+  const options = {
+      roomName: 'JitsiMeetAPIExample',
+      width: "80%",
+      height: "80%",
+      parentNode: document.querySelector('#meet')
+  };
+  const api = new JitsiMeetExternalAPI(domain, options);
+  </script>
+  {% endcomment %}
+{% endblock %}
